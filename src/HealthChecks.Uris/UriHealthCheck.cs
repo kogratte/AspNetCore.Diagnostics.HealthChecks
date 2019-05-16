@@ -25,7 +25,10 @@ namespace HealthChecks.Uris
 
             try
             {
-                foreach (var item in _options.UrisOptions)
+                var httpClient = _httpClientFactory();
+
+                var uris = _options.UrisOptions ?? httpClient.B
+                foreach (var item in )
                 {
                     if (cancellationToken.IsCancellationRequested)
                     {
@@ -36,7 +39,6 @@ namespace HealthChecks.Uris
                     var expectedStatusCodes = item.ExpectedHttpCodes ?? defaultExpectedStatusCodes;
                     var timeout = item.Timeout != TimeSpan.Zero ? item.Timeout : defaultTimeout;
 
-                    var httpClient = _httpClientFactory();
 
                     var requestMessage = new HttpRequestMessage(method, item.Uri);
 

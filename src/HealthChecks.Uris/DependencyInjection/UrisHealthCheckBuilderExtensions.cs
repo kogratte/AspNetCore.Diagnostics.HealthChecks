@@ -44,8 +44,8 @@ namespace Microsoft.Extensions.DependencyInjection
         /// Add a health check for single uri, using the named httpClient.
         /// </summary>
         /// <param name="builder">The <see cref="IHealthChecksBuilder"/>.</param>
+        /// <param name="httpClientName">The named http client to use.</param>
         /// <param name="uri">The uri to check.</param>
-        /// <param name="httpClientName">The http client name to use.</param>
         /// <param name="name">The health check name. Optional. If <c>null</c> the type name 'uri-group' will be used for the name.</param>
         /// <param name="failureStatus">
         /// The <see cref="HealthStatus"/> that should be reported when the health check fails. Optional. If <c>null</c> then
@@ -53,7 +53,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// </param>
         /// <param name="tags">A list of tags that can be used to filter sets of health checks. Optional.</param>
         /// <returns>The <see cref="IHealthChecksBuilder"/>.</returns></param>
-        public static IHealthChecksBuilder AddUrlGroup(this IHealthChecksBuilder builder, Uri uri, string httpClientName, string name = default, HealthStatus? failureStatus = default, IEnumerable<string> tags = default)
+        public static IHealthChecksBuilder AddUrlGroup(this IHealthChecksBuilder builder, string httpClientName, Uri uri, string name = default, HealthStatus? failureStatus = default, IEnumerable<string> tags = default)
         {
             builder.Services.AddHttpClient();
 
